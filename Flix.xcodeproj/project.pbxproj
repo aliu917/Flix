@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		C02AFA1E22C3EADD000CDA04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C02AFA1D22C3EADD000CDA04 /* AppDelegate.m */; };
-		C02AFA2122C3EADD000CDA04 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C02AFA2022C3EADD000CDA04 /* ViewController.m */; };
 		C02AFA2422C3EADD000CDA04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C02AFA2222C3EADD000CDA04 /* Main.storyboard */; };
 		C02AFA2622C3EADE000CDA04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C02AFA2522C3EADE000CDA04 /* Assets.xcassets */; };
 		C02AFA2922C3EADE000CDA04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C02AFA2722C3EADE000CDA04 /* LaunchScreen.storyboard */; };
 		C02AFA2C22C3EADE000CDA04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C02AFA2B22C3EADE000CDA04 /* main.m */; };
 		C02AFA3622C3EADE000CDA04 /* FlixTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C02AFA3522C3EADE000CDA04 /* FlixTests.m */; };
 		C02AFA4122C3EADE000CDA04 /* FlixUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C02AFA4022C3EADE000CDA04 /* FlixUITests.m */; };
+		C02AFA5022C3F65F000CDA04 /* MoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C02AFA4F22C3F65F000CDA04 /* MoviesViewController.m */; };
+		C02AFA5722C41C48000CDA04 /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C02AFA5622C41C48000CDA04 /* MovieCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +39,6 @@
 		C02AFA1922C3EADD000CDA04 /* Flix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C02AFA1C22C3EADD000CDA04 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C02AFA1D22C3EADD000CDA04 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C02AFA1F22C3EADD000CDA04 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C02AFA2022C3EADD000CDA04 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C02AFA2322C3EADD000CDA04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C02AFA2522C3EADE000CDA04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C02AFA2822C3EADE000CDA04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +50,10 @@
 		C02AFA3C22C3EADE000CDA04 /* FlixUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlixUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C02AFA4022C3EADE000CDA04 /* FlixUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlixUITests.m; sourceTree = "<group>"; };
 		C02AFA4222C3EADE000CDA04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C02AFA4E22C3F65F000CDA04 /* MoviesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoviesViewController.h; sourceTree = "<group>"; };
+		C02AFA4F22C3F65F000CDA04 /* MoviesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoviesViewController.m; sourceTree = "<group>"; };
+		C02AFA5522C41C48000CDA04 /* MovieCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
+		C02AFA5622C41C48000CDA04 /* MovieCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,13 +104,14 @@
 		C02AFA1B22C3EADD000CDA04 /* Flix */ = {
 			isa = PBXGroup;
 			children = (
+				C02AFA5422C3F78D000CDA04 /* Models */,
+				C02AFA5322C3F787000CDA04 /* Views */,
+				C02AFA5222C3F77D000CDA04 /* View Controllers */,
 				C02AFA1C22C3EADD000CDA04 /* AppDelegate.h */,
-				C02AFA1D22C3EADD000CDA04 /* AppDelegate.m */,
-				C02AFA1F22C3EADD000CDA04 /* ViewController.h */,
-				C02AFA2022C3EADD000CDA04 /* ViewController.m */,
 				C02AFA2222C3EADD000CDA04 /* Main.storyboard */,
 				C02AFA2522C3EADE000CDA04 /* Assets.xcassets */,
 				C02AFA2722C3EADE000CDA04 /* LaunchScreen.storyboard */,
+				C02AFA1D22C3EADD000CDA04 /* AppDelegate.m */,
 				C02AFA2A22C3EADE000CDA04 /* Info.plist */,
 				C02AFA2B22C3EADE000CDA04 /* main.m */,
 			);
@@ -130,6 +134,31 @@
 				C02AFA4222C3EADE000CDA04 /* Info.plist */,
 			);
 			path = FlixUITests;
+			sourceTree = "<group>";
+		};
+		C02AFA5222C3F77D000CDA04 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C02AFA4E22C3F65F000CDA04 /* MoviesViewController.h */,
+				C02AFA4F22C3F65F000CDA04 /* MoviesViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		C02AFA5322C3F787000CDA04 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C02AFA5522C41C48000CDA04 /* MovieCell.h */,
+				C02AFA5622C41C48000CDA04 /* MovieCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C02AFA5422C3F78D000CDA04 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,9 +291,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C02AFA2122C3EADD000CDA04 /* ViewController.m in Sources */,
 				C02AFA2C22C3EADE000CDA04 /* main.m in Sources */,
 				C02AFA1E22C3EADD000CDA04 /* AppDelegate.m in Sources */,
+				C02AFA5722C41C48000CDA04 /* MovieCell.m in Sources */,
+				C02AFA5022C3F65F000CDA04 /* MoviesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
