@@ -9,9 +9,11 @@
 #import "MoviesGridViewController.h"
 #import "MovieCollectionCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "DetailsViewController.h"
 
 @interface MoviesGridViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -38,7 +40,20 @@
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
 }
 
+-(NSArray *)filterMovies: (NSArray *)movies {
+    NSNumber *superHeroID = @878;
+    NSMutableArray *filteredArray = [[NSMutableArray alloc] init];
+    for (NSDictionary* movie in movies) {
+        NSArray *ids = movie[@"genre_ids"];
+        if ([ids containsObject:(NSNumber *)superHeroID]) {
+            [filteredArray addObject: movie];
+        }
+    }
+    return filteredArray;
+}
+
 - (void)fetchMovies {
+    [self.activityIndicator startAnimating];
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
@@ -52,25 +67,33 @@
             NSLog(@"%@", dataDictionary);
             // TODO: Get the array of movies
             NSArray *movies = dataDictionary[@"results"];
-            self.movies = movies;
+            self.movies = [self filterMovies:movies];
             // TODO: Store the movies in a property to use elsewhere
             // TODO: Reload your table view data
             [self.collectionView reloadData];
+            [self.activityIndicator stopAnimating];
         }
     }];
     [task resume];
 }
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    UICollectionViewCell *tappedCell = sender;
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell: tappedCell];
+    NSDictionary *movie = self.movies[indexPath.row];
+    DetailsViewController *detailsViewController = [segue destinationViewController];
+    detailsViewController.movie = movie;
+    
+    NSLog(@"Tapping on a movie!");
 }
-*/
+
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     MovieCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionCell" forIndexPath:indexPath];

@@ -96,11 +96,11 @@
             </objects>
             <point key="canvasLocation" x="588" y="-281"/>
         </scene>
-        <!--Item-->
+        <!--Superhero-->
         <scene sceneID="rGQ-KI-3VV">
             <objects>
-                <navigationController id="t3P-dr-qvY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="cTw-sO-SKE"/>
+                <navigationController title="Superhero" id="t3P-dr-qvY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Superhero" id="cTw-sO-SKE"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3fP-1j-t99">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -147,16 +147,23 @@
                                         </view>
                                         <connections>
                                             <outlet property="posterView" destination="UYL-9j-U1L" id="hC8-5B-vZI"/>
+                                            <segue destination="Ucw-RX-94R" kind="show" id="oBs-qj-Y1P"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="uXe-0f-mDL">
+                                <rect key="frame" x="189" y="430" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Ryp-zx-R3f"/>
                     </view>
                     <navigationItem key="navigationItem" id="mLx-2k-nCW"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="uXe-0f-mDL" id="FK6-ra-hnD"/>
                         <outlet property="collectionView" destination="TUy-5f-umM" id="iAb-ZF-BsA"/>
                     </connections>
                 </viewController>
@@ -237,4 +244,7 @@
             <point key="canvasLocation" x="-926" y="450"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="CBA-jl-8bL"/>
+    </inferredMetricsTieBreakers>
 </document>
