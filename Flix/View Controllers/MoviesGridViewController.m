@@ -11,13 +11,14 @@
 #import "UIImageView+AFNetworking.h"
 #import "DetailsViewController.h"
 
-@interface MoviesGridViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface MoviesGridViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) NSArray *movies;
+//@property (nonatomic, strong) NSDictionary *nameToMovies;
+@property (nonatomic, strong) NSArray *filteredMovies;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-
 
 @end
 
@@ -29,7 +30,14 @@
     
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
+    self.searchBar.delegate = self;
     [self fetchMovies];
+    self.filteredMovies = self.movies;
+    
+    /*[searchController.searchBar sizeToFit];
+    searchBarPlaceholder.addSubview(searchController.searchBar)
+    automaticallyAdjustsScrollViewInsets = false;
+    definesPresentationContext = true;*/
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
     
@@ -40,17 +48,39 @@
     CGFloat itemHeight = itemWidth * 1.5;
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
 }
-
--(NSArray *)filterMovies: (NSArray *)movies {
-    NSNumber *superHeroID = @878;
-    NSMutableArray *filteredArray = [[NSMutableArray alloc] init];
-    for (NSDictionary* movie in movies) {
-        NSArray *ids = movie[@"genre_ids"];
-        if ([ids containsObject:(NSNumber *)superHeroID]) {
-            [filteredArray addObject: movie];
-        }
+/*
+-(void)makeNameToMovieDict {
+    NSMutableDictionary *nameToMovie = [[NSMutableDictionary alloc] init];
+    for (NSDictionary *movie in self.movies) {
+        NSString *movieTitle = movie[@"title"];
+        [nameToMovie setObject:movie forKey:movieTitle];
     }
-    return filteredArray;
+    self.nameToMovies = nameToMovie;
+}
+ */
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    //NSArray *titleNames = [self.nameToMovies allKeys];
+    
+    if (searchText.length != 0) {
+        
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
+            return [evaluatedObject[@"title"] containsString:searchText];
+        }];
+        self.filteredMovies = [self.movies filteredArrayUsingPredicate:predicate];
+        
+        NSLog(@"Filtering.");
+        NSLog(@"%@", self.filteredMovies);
+        /*NSString *substring [NSString stringWithString: searchText];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat: @"title contains]*/
+    }
+    else {
+        self.filteredMovies = self.movies;
+    }
+    
+    [self.collectionView reloadData];
+    
 }
 
 - (void)fetchMovies {
@@ -99,19 +129,29 @@
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     MovieCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionCell" forIndexPath:indexPath];
     
-    NSDictionary *movie = self.movies[indexPath.item];
+    NSDictionary *movie = [[NSDictionary alloc] init];
+    if (self.filteredMovies != nil) {
+       movie = self.filteredMovies[indexPath.item];
+    } else {
+        movie = self.movies[indexPath.item];
+    }
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
     NSString *posterURLString = movie[@"poster_path"];
     NSString *fullPosterURLString = [baseURLString stringByAppendingString: posterURLString];
     NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
     cell.posterView.image = nil;
+    
     [cell.posterView setImageWithURL:posterURL];
     
     return cell;
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.movies.count;
+    if (self.filteredMovies != nil) {
+        return self.filteredMovies.count;
+    } else {
+        return self.movies.count;
+    }
 }
 
 @end
