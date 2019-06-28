@@ -11,6 +11,8 @@
 		A41F694260283C801A42E27D /* Pods_FlixTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDAD270F498FEE11C7FC3681 /* Pods_FlixTests.framework */; };
 		C027E4AA22C598290043F5C5 /* SuperheroCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C027E4A922C598290043F5C5 /* SuperheroCollectionViewCell.m */; };
 		C027E4AD22C5F4060043F5C5 /* SearchCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C027E4AC22C5F4060043F5C5 /* SearchCollectionReusableView.m */; };
+		C027E4B022C6CC4A0043F5C5 /* TrailerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C027E4AF22C6CC4A0043F5C5 /* TrailerViewController.m */; };
+		C027E4B222C6CD4D0043F5C5 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C027E4B122C6CD4D0043F5C5 /* WebKit.framework */; };
 		C02AFA1E22C3EADD000CDA04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C02AFA1D22C3EADD000CDA04 /* AppDelegate.m */; };
 		C02AFA2422C3EADD000CDA04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C02AFA2222C3EADD000CDA04 /* Main.storyboard */; };
 		C02AFA2622C3EADE000CDA04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C02AFA2522C3EADE000CDA04 /* Assets.xcassets */; };
@@ -57,6 +59,9 @@
 		C027E4A922C598290043F5C5 /* SuperheroCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuperheroCollectionViewCell.m; sourceTree = "<group>"; };
 		C027E4AB22C5F4060043F5C5 /* SearchCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCollectionReusableView.h; sourceTree = "<group>"; };
 		C027E4AC22C5F4060043F5C5 /* SearchCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCollectionReusableView.m; sourceTree = "<group>"; };
+		C027E4AE22C6CC4A0043F5C5 /* TrailerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrailerViewController.h; sourceTree = "<group>"; };
+		C027E4AF22C6CC4A0043F5C5 /* TrailerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrailerViewController.m; sourceTree = "<group>"; };
+		C027E4B122C6CD4D0043F5C5 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		C02AFA1922C3EADD000CDA04 /* Flix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C02AFA1C22C3EADD000CDA04 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C02AFA1D22C3EADD000CDA04 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -91,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C027E4B222C6CD4D0043F5C5 /* WebKit.framework in Frameworks */,
 				CA146E446327974FA6E1D05D /* Pods_Flix.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,6 +201,8 @@
 				C02AFA5C22C44308000CDA04 /* MoviesGridViewController.m */,
 				C0CC92C022C5931400880B41 /* SuperheroGridViewController.h */,
 				C0CC92C122C5931400880B41 /* SuperheroGridViewController.m */,
+				C027E4AE22C6CC4A0043F5C5 /* TrailerViewController.h */,
+				C027E4AF22C6CC4A0043F5C5 /* TrailerViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -224,6 +232,7 @@
 		E3B75B8B5876A6177B754AA0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C027E4B122C6CD4D0043F5C5 /* WebKit.framework */,
 				114AD6BD42F02EAA771D9946 /* Pods_Flix.framework */,
 				BDAD270F498FEE11C7FC3681 /* Pods_FlixTests.framework */,
 				602E9ED810B11CF54AED3FAD /* Pods_FlixUITests.framework */,
@@ -457,6 +466,7 @@
 				C027E4AD22C5F4060043F5C5 /* SearchCollectionReusableView.m in Sources */,
 				C0CC92C222C5931400880B41 /* SuperheroGridViewController.m in Sources */,
 				C02AFA1E22C3EADD000CDA04 /* AppDelegate.m in Sources */,
+				C027E4B022C6CC4A0043F5C5 /* TrailerViewController.m in Sources */,
 				C02AFA6022C44496000CDA04 /* MovieCollectionCell.m in Sources */,
 				C02AFA5722C41C48000CDA04 /* MovieCell.m in Sources */,
 				C02AFA5022C3F65F000CDA04 /* MoviesViewController.m in Sources */,
