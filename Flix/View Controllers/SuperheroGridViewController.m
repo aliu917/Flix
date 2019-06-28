@@ -1,27 +1,26 @@
 //
-//  MoviesGridViewController.m
+//  SuperheroGridViewController.m
 //  Flix
 //
 //  Created by aliu18 on 6/26/19.
 //  Copyright © 2019 aliu18. All rights reserved.
 //
 
-#import "MoviesGridViewController.h"
-#import "MovieCollectionCell.h"
+#import "SuperheroGridViewController.h"
+#import "SuperheroCollectionViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "DetailsViewController.h"
 
-@interface MoviesGridViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface SuperheroGridViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-@property (nonatomic, strong) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (nonatomic, strong) NSArray *movies;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 
 @end
 
-@implementation MoviesGridViewController
+@implementation SuperheroGridViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -68,7 +67,7 @@
             NSLog(@"%@", dataDictionary);
             // TODO: Get the array of movies
             NSArray *movies = dataDictionary[@"results"];
-            self.movies = movies;
+            self.movies = [self filterMovies:movies];
             // TODO: Store the movies in a property to use elsewhere
             // TODO: Reload your table view data
             [self.collectionView reloadData];
@@ -97,7 +96,7 @@
 
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    MovieCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionCell" forIndexPath:indexPath];
+    SuperheroCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SuperheroCollectionViewCell" forIndexPath:indexPath];
     
     NSDictionary *movie = self.movies[indexPath.item];
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
