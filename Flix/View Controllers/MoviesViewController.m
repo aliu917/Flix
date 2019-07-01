@@ -90,6 +90,10 @@
     cell.synopsisLabel.text = movie[@"overview"];
     //cell.textLabel.text = movie[@"title"];
     
+    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+
+    
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
     NSString *posterURLString = movie[@"poster_path"];
     NSString *fullPosterURLString = [baseURLString stringByAppendingString: posterURLString];
